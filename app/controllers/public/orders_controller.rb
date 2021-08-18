@@ -1,22 +1,26 @@
 class Public::OrdersController < ApplicationController
   
+  def index
+    
+  end 
+
   def show
     
   end 
   
-  def edit
+  def new
     
   end 
   
-  def update
+  def comfirm
     
   end 
   
-  def quit
+  def complete
     
   end 
   
-  def quit_update
+  def create
     
   end 
   
