@@ -5,29 +5,28 @@ Rails.application.routes.draw do
     registrations: "admins/registrations"
   }
   
-  namespace :admin do
-    get 'top' => 'homes#top'
-    resources :customers
-    resources :products
-    resources :genres
-    resources :orders
-    resources :order_details
-  end
-  
-  
   devise_for :customers, path: 'customers', controllers: {
     sessions: "public/sessions",
     registrations: "public/registrations"
   }
   
-   scope module: :customer do
+  namespace :admin do
+    get 'top' => 'homes#top'
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :products, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
+  end
+  
+  scope module: :customer do
     root 'public/homes#top'
     get 'about' => 'public/homes#about'
-    resources :customers
-    resources :products
-    resources :cart_items
-    resources :orders
-    resources :receivers
+    resources :customers, only: [:show, :edit, :update, :quit, :quit_update]
+    resources :products, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :all_destroy, :create]
+    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    resources :receivers, only: [:index, :edit, :create, :update, :destroy]
   end
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
