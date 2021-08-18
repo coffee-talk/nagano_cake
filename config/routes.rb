@@ -1,5 +1,23 @@
 Rails.application.routes.draw do
   
+  namespace :admins do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+  end
+  namespace :admins do
+    get 'orders/show'
+  end
+  namespace :admins do
+    get 'genres/index'
+    get 'genres/edit'
+  end
+  namespace :admins do
+    get 'products/index'
+    get 'products/new'
+    get 'products/show'
+    get 'products/edit'
+  end
   devise_for :admins, path: 'admins', controllers: {
     sessions: "admins/sessions",
     registrations: "admins/registrations"
