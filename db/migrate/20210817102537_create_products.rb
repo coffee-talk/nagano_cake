@@ -1,12 +1,12 @@
 class CreateProducts < ActiveRecord::Migration[5.2]
   def change
     create_table :products do |t|
-      t.string :name
-      t.text :introduction
-      t.string :image_id
-      t.integer :genre_id
-      t.integer :price
-      t.boolean :is_active
+      t.string :name, null: false 
+      t.text :introduction, null: false 
+      t.string :image_id, null: false
+      t.integer :genre_id, null: false
+      t.integer :price, null: false
+      t.boolean :is_active, null: false, default: true
 
       t.timestamps
     end
