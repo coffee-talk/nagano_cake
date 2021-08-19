@@ -6,7 +6,9 @@ class Public::ReceiversController < ApplicationController
   end 
   
   def create
+    
     receiver = Receiver.new(receiver_params)
+    receiver.customer_id = current_customer.id
     receiver.save
     redirect_to  receivers_path
   end 
