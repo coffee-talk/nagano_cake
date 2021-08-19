@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations"
   }
 
-  namespace :admin do
+  namespace :admins do
     get 'top' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
