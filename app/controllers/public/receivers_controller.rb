@@ -33,7 +33,7 @@ class Public::ReceiversController < ApplicationController
 
   private
   def receiver_params
-    params.require(:receiver).permit(:postal_code, :address, :name)
+    params.require(:receiver).permit(:payment_method, :postal_code, :address, :name)
   end
 
 end
