@@ -6,6 +6,7 @@ class Public::ReceiversController < ApplicationController
   end
 
   def create
+
     receiver = Receiver.new(receiver_params)
     receiver.customer_id = current_customer.id
     receiver.save
@@ -14,6 +15,7 @@ class Public::ReceiversController < ApplicationController
 
   def edit
     @receiver = Receiver.find(params[:id])
+
   end
 
   def update
@@ -23,6 +25,7 @@ class Public::ReceiversController < ApplicationController
   end
 
   def destroy
+
   end
 
   private
