@@ -27,11 +27,11 @@
    </tr>
    <% @receivers.each do |receiver| %>
    <tr>
-     <td><%= receiver.postal_code %>a</td>
+     <td><%= receiver.postal_code %></td>
      <td><%= receiver.address %></td>
      <td><%= receiver.name %></td>
      <td>
-       <%= link_to "編集する", receiver_path(receiver.id), class:"btn btn-sm btn-success" %>
+       <%= link_to "編集する",  edit_receiver_path(receiver.id), class:"btn btn-sm btn-success" %>
        <%= link_to "削除する", receiver_path(receiver.id), method: :delete, class:"btn btn-sm btn-danger" %>
     </td>
    </tr>

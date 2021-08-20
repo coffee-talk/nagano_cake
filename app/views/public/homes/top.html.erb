@@ -1,1 +1,17 @@
-<h1>ここがトップぺージです</h1>
+<h3>
+  ようこそ、ながのCAKEへ！
+  </br>このサイトは、ケーキ販売のECサイトになります。
+  </br>会員でない方も商品の閲覧はできますが、
+  </br>購入には会員登録が必要になります。
+</h3>
+
+<h2>新着商品</h2>
+
+
+<% @products.each do |product| %>
+  <%= attachment_image_tag product, :image %>
+  <%= product.name %>
+  <%= number_to_currency(product.price, unit: "¥", format: "%u %n") %>
+<% end %>
+
+<%= link_to "全ての商品を見る＞", products_path %>

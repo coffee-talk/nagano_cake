@@ -1,27 +1,34 @@
 class Public::OrdersController < ApplicationController
-  
+
   def index
-    
-  end 
+
+  end
 
   def show
-    
-  end 
-  
+
+  end
+
   def new
+    @order = Order.new
     
-  end 
-  
+  end
+
   def comfirm
-    
-  end 
-  
+
+  end
+
   def complete
-    
-  end 
-  
+
+  end
+
   def create
-    
-  end 
-  
+
+  end
+
+  private
+  def order_params
+    params.require(:order).permit(:postal_code, :address, :name)
+  end
+
+
 end
