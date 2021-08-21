@@ -1,23 +1,33 @@
 class Public::CustomersController < ApplicationController
-  
+  before_action :authenticate_customer!
+
   def show
-    
-  end 
-  
+    @customer = current_customer
+  end
+
   def edit
-    
-  end 
-  
+    @customer = current_customer
+  end
+
   def update
-    
-  end 
-  
+    @customer = current_customer
+    @customer.update(customer_params)
+    redirect_to @customer
+  end
+
   def quit
-    
-  end 
-  
+    # 退会確認画面を表示するだけ
+  end
+
   def quit_update
-    
-  end 
-  
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    redirect_to root_path
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :postal_code, :address, :phone_number, :email, :is_deleted)
+  end
 end
