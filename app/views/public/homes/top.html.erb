@@ -13,11 +13,17 @@
          </div>
       </div>
       <h2><strong>新着商品</strong></h2>
+      <div class="row">  
         <% @products.each do |product| %>
-          <%= attachment_image_tag product, :image %>
-          <%= product.name %>
-          <%= number_to_currency(product.price, unit: "¥", format: "%u %n") %>
+          <div class="col-md-5">
+            <div>
+              <%= attachment_image_tag product, :image, size: "200x150" %>
+              <%= product.name %>
+              ¥<%= product.price.to_s(:delimited) %>
+            </div>
+          </div>
         <% end %>
+      </div>
         <%= link_to "全ての商品を見る＞", products_path %>
     </div>
   </div>
