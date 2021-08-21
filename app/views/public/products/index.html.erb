@@ -1,16 +1,20 @@
-<h2>
-  商品一覧
-  <span>
-		(全<%= @products.count %>件)
-	</span>
-</h2>
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <h2>
+        <strong>商品一覧</strong>
+        <span>(全<%= @products.count %>件)</span>
+      </h2>
 
-<% @products.each do |product| %>
-  <div><%= attachment_image_tag product, :image %></div>
-  <div><%= product.name %></div>
-<div><%= product.price %></div>
-<% end %>
-
-<div>
-  <%= paginate @products %>
+      <% @products.each do |product| %>
+        <div><%= attachment_image_tag product, :image, size: "200x150" %></div>
+        <div><%= product.name %></div>
+        <div><%= product.price %></div>
+      <% end %>
+      <div>
+        <%= paginate @products %>
+      </div>
+    </div>
+  </div>
 </div>
