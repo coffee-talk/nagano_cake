@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete'
     get 'customers/quit' => 'customers#quit'
     patch 'customers/quit_update' => 'customers#quit_update'
-    resource :customers, only: [:show, :edit, :update]
+    get 'customers/edit' => 'customers#edit'
+    patch 'customers' => 'customers#update'
+    resources :customers, only: [:show]
     resources :products, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :create, :index, :show]
