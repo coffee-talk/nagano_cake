@@ -2,7 +2,7 @@
   <%= attachment_image_tag @product, :image, size: "300x200" %>
   <p><%= @product.name %></p>
   <p><%= @product.introduction %></p>
-  <p><%= @product.add_tax_price.to_s(:dlimited) %>(税込)</p>
+  <p><%= @product.add_tax_price.to_s(:delimited) %>(税込)</p>
   <P>
     <%= form_with(model: cart_items, local: true) do |f| %>
      <div class="form-group">
