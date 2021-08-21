@@ -3,7 +3,7 @@
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
-      <th>税抜き価格</th>
+      <th>税抜価格</th>
       <th>ジャンル</th>
       <th>ステータス</th>
     </tr>
@@ -13,9 +13,15 @@
       <tr>
         <td><%= product.id %></td>
         <td><%= link_to product.name, admins_product_path(product) %></td>
-        <td><%= product.price %></td>
-        <td><%= product.genre_id %></td>
-        <td><%= product.is_active %></td>
+        <td><%= product.price.to_s(:delimited) %></td>
+        <td><%= product.genre.name %></td>
+        <td>
+         <% if product.is_active %>
+          <p>販売中</p>
+         <% else %>
+          <p>販売停止中</p>
+         <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
