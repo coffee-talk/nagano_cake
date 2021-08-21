@@ -1,4 +1,5 @@
 class Admins::ProductsController < ApplicationController
+
   def index
     @product = Product.new
     @products = Product.page(params[:page]).per(10)
@@ -6,11 +7,12 @@ class Admins::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @genres = Genre.all
   end
 
   def create
-    @product = Product.new(product_params)
-    @product.save
+    product = Product.new(product_params)
+    product.save
     redirect_to admins_products_path
   end
 
@@ -20,11 +22,22 @@ class Admins::ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @genres = Genre.all
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to admins_products_path
+  end
+
+  def destroy
   end
 
   private
   def product_params
-    params.require(:product).permit(:name, :introduction, :image, :genre_id, :price, :is_active)
+    params.require(:product).permit(:name, :introduction, :image, :price, :is_active, :genre_id)
   end
 
 end
