@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     registrations: "admins/registrations"
   }
 
-  devise_for :customers, path: 'customers', controllers: {
+  devise_for :customers, path: '', controllers: {
     sessions: "public/sessions",
     registrations: "public/registrations"
   }
@@ -27,9 +27,7 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete'
     get 'customers/quit' => 'customers#quit'
     patch 'customers/quit_update' => 'customers#quit_update'
-    get 'customers/edit' => 'customers#edit'
-    patch 'customers' => 'customers#update'
-    resources :customers, only: [:show]
+    resource :customers, only: [:show, :edit, :update]
     resources :products, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :create, :index, :show]

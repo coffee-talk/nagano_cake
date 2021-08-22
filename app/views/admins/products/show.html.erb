@@ -1,1 +1,35 @@
 <h2>商品詳細</h2>
+ <div>
+  <%= attachment_image_tag @product, :image %>
+ </div>
+<table>
+  <tr>
+    <th>商品名</th>
+    <td><%= @product.name %></td>
+  </tr>
+  <tr>
+    <th>商品説明</th>
+    <td><%= @product.introduction %></td>
+  </tr>
+  <tr>
+    <th>ジャンル</th>
+    <td><%= @product.genre_id %></td>
+  </tr>
+  <tr>
+    <th>税込価格（税抜価格）</th>
+    <td><%= @product.price.to_s(:delimited) %> (<%= @product.add_tax_price.to_s(:delimited) %>)円</td>
+  </tr>
+  <tr>
+    <th>販売ステータス</th>
+    <td>
+     <% if @product.is_active %>
+      <p>販売中</p>
+     <% else %>
+      <p>販売停止中</p>
+     <% end %>
+    </td>
+  </tr>
+</table>
+<div>
+  <%= link_to '編集する', edit_admins_product_path(@product) %>
+</div>
