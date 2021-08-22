@@ -11,8 +11,11 @@
           ￥<%= @product.add_tax_price.to_s(:delimited) %>（税込）
         </strong></h3></p>
         <table class="col-sm-6">
-          <%= form_with(model: @cart_item, local: true) do |f| %>
+          <%= form_with(model: @cart_item, url: cart_items_path, local: true) do |f| %>
             <tr>
+              <td>
+                <%= f.hidden_field :product_id, value:@product.id %>
+              </td>
               <td>
                 <%= f.select :amount, {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10},
                 { include_blank: '個数選択'}, { class: 'form-control ' , required: true } %>
