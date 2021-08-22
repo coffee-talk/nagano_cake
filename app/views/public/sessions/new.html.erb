@@ -1,23 +1,53 @@
-<h2>ログイン</h2>
-<h3>会員の方はこちらからログイン</h3>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<body>
+  <div class="container pl-5">
+    <div class="row my-5">
+      <div class="col-2 bg-light" >
+        <h2>ログイン</h2>
+      </div>
+    </div>
+    <div class="row my-4 pl-3">
+      <div class="col-5 bg-light">
+        <h3>会員の方はこちらからログイン</h3>
+      </div>
+    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="row my-3 pl-5">
+        <div class="col-2">
+          <%= f.label :メールアドレス %>
+        </div>
+        <div class="col-6">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50x20" %>
+         </div>
+      </div>
+
+      <div class="row my-3 pl-5">
+        <div class="col-2">
+          <%= f.label :パスワード %>
+        </div>
+        <div class="col-6">
+          <%= f.password_field :password, autocomplete: "current-password", size: "50x20" %>
+        </div>
+      </div>
+
+      <div class="row my-4">
+        <div class="col-6 text-center ml-4">
+          <%= f.submit "ログイン", class: 'btn btn-primary w-25' %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row mt-5 mb-4 pl-3">
+      <div class="col-5 bg-light">
+        <h3>会員登録がお済みでない方</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8 text-center">
+        <%= link_to 'こちら', new_customer_registration_path %>
+        から新規登録を行なって下さい。
+      </div>
+    </div>
+    <%#= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
-<h3>会員登録がお済みでない方</h3>
-<%= link_to 'こちら', new_customer_registration_path %>
-から新規登録を行なって下さい。
-
-<%#= render "devise/shared/links" %>
+</body>
