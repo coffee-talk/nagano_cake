@@ -8,7 +8,7 @@
       </h2>
       <div class="row">
         <% @products.each do |product| %>
-          <div class="col-md-3 col">
+          <div class="col-md-3">
             <div><strong>
               <div><%= attachment_image_tag product, :image, size: "200x150" %></div>
               <div><%= product.name %></div>
