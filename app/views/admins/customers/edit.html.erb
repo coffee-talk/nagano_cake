@@ -1,43 +1,67 @@
-<h2><%= @customer.full_name %>さんの会員編集</h2>
-  <%= form_with model: @customer, url: admins_customer_path, local:true do |f| %>
-    <div class="form-group">
-      <%= f.label :id, "会員ID" %>
-      <%= @customer.id %>
-    </div>
-    <div class="field">
-      <%= f.label :"氏名" %>
-      <%= f.label :"(姓)" %><%= f.text_field :last_name, autofocus: true %>
-      <%= f.label :"(名)" %><%= f.text_field :first_name, autofocus: true %>
-    </div>
-    <div class="field">
-      <%= f.label :"フリガナ" %>
-      <%= f.label :"(セイ)" %><%= f.text_field :kana_last_name, autofocus: true %>
-      <%= f.label :"(メイ)" %><%= f.text_field :kana_first_name, autofocus: true %>
-    </div>
-    <div class="field">
-      <%= f.label :"郵便番号（ハイフンなし）" %><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-    </div>
-    <div class="field">
-      <%= f.label :"住所" %><%= f.text_field :address, autofocus: true %>
-    </div>
-    <div class="field">
-      <%= f.label :"電話番号（ハイフンなし）" %><%= f.text_field :phone_number, autofocus: true %>
-    </div>
-    <div class="field">
-      <%= f.label :"メールアドレス" %><%= f.text_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :"会員ステータス" %>
-      <div>
-        <%= f.radio_button :is_deleted, false %>
-        <%= f.label :is_deleted, '有効', value: false %>
-      </div>
-      <div>
-        <%= f.radio_button :is_deleted, true %>
-        <%= f.label :is_deleted, "退会", value: true %>
-      </div>
-    </div>
-    <div class="actions">
-     <%= f.submit "変更を保存" %>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="row mx-auto">
+    <h2><span class="badge badge-secondary"><%= @customer.full_name %>さんの会員編集</span></h2>
+  </div>
+      <%= form_with model: @customer, url: admins_customer_path, local:true do |f| %>
+        <div class="mb-3 row">
+          <%= f.label :id, "会員ID", class:"col-sm-3 col-form-label" %>
+          <%= @customer.id %>
+        </div>
+        <div class="mb-3 row">
+          <%= f.label :"氏名", class:"col-sm-3 col-form-label" %>
+          <div class="col-sm-4">
+            <%= f.label :"(姓)" %><%= f.text_field :last_name, autofocus: true, class:"form-control" %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.label :"(名)" %><%= f.text_field :first_name, autofocus: true, class:"form-control" %>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <%= f.label :"フリガナ", class:"col-sm-3 col-form-label" %>
+          <div class="col-sm-4">
+            <%= f.label :"(セイ)" %><%= f.text_field :kana_last_name, autofocus: true, class:"form-control" %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.label :"(メイ)" %><%= f.text_field :kana_first_name, autofocus: true, class:"form-control" %>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <%= f.label :"郵便番号（ハイフンなし）", class:"col-sm-3 col-form-label" %>
+          <div class="col-sm-4">
+            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-control" %>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <%= f.label :"住所", class:"col-sm-3 col-form-label" %>
+          <div class="col-sm-7">
+            <%= f.text_area :address, autofocus: true, class:"form-control" %>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <%= f.label :"電話番号（ハイフンなし）", class:"col-sm-3 col-form-label" %>
+          <div class="col-sm-4">
+            <%= f.text_field :phone_number, autofocus: true, class:"form-control" %>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <%= f.label :"メールアドレス", class:"col-sm-3 col-form-label" %>
+          <div class="col-sm-4">
+            <%= f.text_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <%= f.label :"会員ステータス", class:"col-sm-3 col-form-label" %>
+          <div class="col-sm-4">
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :is_deleted, '有効', value: false %>
+            <%= f.radio_button :is_deleted, true %>
+            <%= f.label :is_deleted, "退会", value: true %>
+
+        </div>
+        <div class="actions">
+          <div class="col-sm-10">
+           <%= f.submit "変更を保存", class:"btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+</div>
