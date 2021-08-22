@@ -1,16 +1,29 @@
-<div class="product-body">
-  <%= attachment_image_tag @product, :image, size: "300x200" %>
-  <p><%= @product.name %></p>
-  <p><%= @product.introduction %></p>
-  <p><%= @product.add_tax_price.to_s(:delimited) %>(税込)</p>
-  <P>
-    <%= form_with(model: cart_items, local: true) do |f| %>
-     <div class="form-group">
-      <%= f.label :amount, '数量' %>
-      <%= f.select :amount, {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10},
-      { include_blank: '個数選択'}, { class: 'form-control' , required: true } %>
-     </div>
-    <% end %>
-  </P>
-  <p><%= f.submit "カートに入れる" %></p>
-</div>
+<div class="container">
+  <div class="row">
+
+      <div class="col-lg-4 offset-lg-2">
+        <%= attachment_image_tag @product, :image, size: "350x250" %>
+      </div>
+      <div class="col-lg-6">
+        <p><h3><strong><%= @product.name %></strong></h3></p>
+        <p><h4><strong><%= @product.introduction %></strong></h4></p></br>
+        <p><h3><strong>
+          ￥<%= @product.add_tax_price.to_s(:delimited) %>（税込）
+        </strong></h3></p>
+        <table class="col-sm-6">
+          <%= form_with(model: @cart_item, local: true) do |f| %>
+            <tr>
+              <td>
+                <%= f.select :amount, {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10},
+                { include_blank: '個数選択'}, { class: 'form-control ' , required: true } %>
+              </td>
+              <td>
+                <%= f.submit :"カートに入れる", class: "btn btn-success sign_up" %>
+              </td>
+            </tr>
+          <% end %>
+         </table>
+      </div>
+
+  </div>
+</dev>
