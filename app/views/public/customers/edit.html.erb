@@ -1,6 +1,6 @@
 <h2>会員情報編集</h2>
 
-<%=  form_with url: customers_path, local:true do |f| %>
+<%=  form_with model: @customer, url: customers_path, local:true do |f| %>
   <%# = render "devise/shared/error_messages", resource: resource %>
   <%#= render "devise/shared/error_messages", resource: @customer %>
   <!--form_forの後ろの記述とエラーメッセージは後で変更する必要があるかもです。-->
