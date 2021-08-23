@@ -14,9 +14,15 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    # admin
+    # !! == customer
+    # !! == admin
     root_path(resource)
   end
 
+  def after_sign_out_path_for(resource)
+    # !! == customer
+    # !! == admin
+    root_path(resource)
+  end
 
 end
