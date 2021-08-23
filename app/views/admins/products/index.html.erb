@@ -1,8 +1,16 @@
-<h2>商品一覧</h2>
+<div class="contain">
+  <div class="row">
+  <div class="mx-auto col-12 col-xl-10">
+<h2><span class="badge badge-secondary">商品一覧</span></h2>
+</div>
+</div>
+<div>
 <%= link_to new_admins_product_path do %>
 <button type="button" class="btn btn-light">  +  </button>
 <% end %>
-<table>
+</div>
+<div class= "col-md-8 offset-md-1">
+<table class="table">
   <thead>
     <tr>
       <th>商品ID</th>
@@ -21,9 +29,9 @@
         <td><%= product.genre.name %></td>
         <td>
          <% if product.is_active %>
-          <p>販売中</p>
+          <p class="text-success">販売中</p>
          <% else %>
-          <p>販売停止中</p>
+          <p class="text-muted">販売停止中</p>
          <% end %>
         </td>
       </tr>
@@ -31,3 +39,4 @@
   </tbody>
  <%= paginate @products %>
 </table>
+</div>
