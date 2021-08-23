@@ -12,7 +12,8 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     @customer.update(customer_params)
-    redirect_to customers_path(current_customer)
+    redirect_to customers_path(@customer)
+
   end
 
   def quit
@@ -22,7 +23,8 @@ class Public::CustomersController < ApplicationController
   def quit_update
     @customer = current_customer
     @customer.update(is_deleted: true)
-    redirect_to root_path
+    reset_session
+    redirect_to root_path(current_customer)
   end
 
   private
