@@ -23,7 +23,7 @@
             <td>
               <%= cart_item.product.add_tax_price.to_s(:delimited) %>
             </td>
-            <% sum = sum + cart_item.product.price %>
+            <% sum = sum + cart_item.product.price * cart_item.amount %>
             <td>
               <%= form_with(model: cart_item, local: true) do |f| %>
                 <div class="form-group">
@@ -51,7 +51,7 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= sum * 1.1 %></td>
+          <td><%= (sum * 1.1).floor %></td>
         </tr>
       </tbody>
     </table>
