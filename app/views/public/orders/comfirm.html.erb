@@ -1,1 +1,89 @@
-<h2>ご注文ありがとうございました！</h2>
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-lg-12">-->
+<!--       <h2>注文情報確認</h2>-->
+
+<!--        <table>-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th>商品名</th>-->
+<!--              <th>単価（税込）</th>-->
+<!--              <th>数量</th>-->
+<!--              <th>小計</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--            <%# sum = 0 %>-->
+<!--              <%# @cart_items.each do |cart_item| %>-->
+<!--              <tr>-->
+<!--                <td>-->
+<!--                  <%#= attachment_image_tag cart_item.product, :image, size: "100x50" %>-->
+<!--                  <%#= cart_item.product.name %>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <%#= cart_item.product.add_tax_price.to_s(:delimited) %>-->
+<!--                </td>-->
+<!--                <%# sum = sum + cart_item.product.price * 1.1 * cart_item.amount %>-->
+<!--                <td>-->
+<!--                  <%#= form_with(model: cart_item, local: true) do |f| %>-->
+<!--                    <div class="form-group">-->
+                      <%#= f.label :amount, '数量' %>
+<!--                      <%#= f.select :amount, {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10},{ include_blank: '個数選択'}, { class: 'form-control' , required: true } %>-->
+<!--                      <%#= f.submit "変更" %>-->
+<!--                    </div>-->
+<!--                  <%# end %>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <%#= cart_item.product.add_tax_price * cart_item.amount %>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--            <%# end %>-->
+<!--          </tbody>-->
+<!--        </table>-->
+
+<!--        <table class='total-amount'>-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th>送料</th>-->
+<!--              <th>商品合計</th>-->
+<!--              <th>請求金額</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--            <tr>-->
+<!--              <td></td>-->
+<!--              <td><%#= (sum * 1.1).floor.to_s(:delimited) %></td>-->
+<!--              <td></td>-->
+<!--            </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+
+        <div>
+          <h3>支払方法</h3>
+          <%= @payment_method %>
+        </div>
+        <div>
+          <h3>お届け先</h3>
+          <% if @address_option == "0" %>
+            <%= @my_address.postal_code %>
+            <%= @my_address.address %>
+            <%= @my_address.first_name %>
+          <% elsif @address_option == "1" %>
+            <%= @saved_address.postal_code %>
+            <%= @saved_address.address %>
+            <%= @saved_address.name %>
+          <% elsif @address_option == "2" %>
+            <%= @new_order.postal_code %>
+            <%= @new_order.address %>
+            <%= @new_order.name %>
+          <% end %>
+        </div>
+
+<!--      <%# else %>-->
+<!--        <div class ="action">-->
+<!--          <%#= link_to "注文を確定する", complete_path %>-->
+<!--        </div>-->
+<!--      <%# end %>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
