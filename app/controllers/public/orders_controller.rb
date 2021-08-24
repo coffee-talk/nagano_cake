@@ -11,13 +11,18 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @address = current_customer
-    @address1 = current_customer.postal_code
     @receiver = current_customer.receivers.all
 
 
   end
 
   def comfirm
+   @cart_items = CartItem.all
+   @payment_method = order_params[:payment_method]
+   
+   @address_option = order_params[:address_option]
+   if @address_option == 0
+   @receiver = order_params[:payment_method]
 
   end
 
@@ -27,11 +32,20 @@ class Public::OrdersController < ApplicationController
 
   def create
 
+     @address_option = order_params[:address_option]
+    if @address_option == 0
+      @order = Order.new
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.name
+    else
+    end
+
   end
 
   private
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :address_option)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :address_option, :order_address)
   end
 
 

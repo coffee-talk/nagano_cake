@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'about' => 'homes#about'
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
-    post 'orders/confirm' => 'orders#confirm'
+    post 'orders/comfirm' => 'orders#comfirm'
     get 'orders/complete' => 'orders#complete'
     get 'customers/quit' => 'customers#quit'
     patch 'customers/quit_update' => 'customers#quit_update'
