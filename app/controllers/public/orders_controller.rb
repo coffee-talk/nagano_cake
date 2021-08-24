@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
    @address_option = order_params[:address_option]
    if @address_option == 0
    @receiver = order_params[:payment_method]
-  end
+  
   end
 
   def complete
