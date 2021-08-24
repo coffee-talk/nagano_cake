@@ -2,7 +2,7 @@
   <h2>注文情報入力</h2>
   <div>
     <h2>支払方法</h2>
-    <%= form_with(url: orders_comfirm_path, local: true) do |f| %>
+    <%= form_with(model: @order, url: orders_comfirm_path, local: true) do |f| %>
       <div>
       <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
       <%= f.label :payment_method, 'クレジットカード' %>
@@ -37,7 +37,7 @@
     <br>
 
     <%= f.label :order_address, "住所" %>
-    <%= f.text_field :order_address %>
+    <%= f.text_field :address %>
     <br>
 
     <%= f.label :order_address, "宛名" %>
