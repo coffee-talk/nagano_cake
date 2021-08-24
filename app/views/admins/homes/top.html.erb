@@ -1,5 +1,11 @@
-<h2>注文履歴一覧</h2>
-    <table>
+<div class="contain">
+ <div class="row">
+  <div class="mx-auto col-12 col-xl-10">
+<h2><span class="badge badge-secondary">注文履歴一覧</span></h2>
+</div>
+</div>
+<div class= "col-md-8 offset-md-1">
+<table class="table">
       <thead>
         <tr>
           <th>購入日時</th>
@@ -13,7 +19,7 @@
         <tr>
           <td><%= link_to order.created_at, admins_order_path(order) %></td>
           <td><%= order.name %></td>
-          <td><%= order.amount %></td>
+          <td><%= order.ordered_product.amount %></td>
           <td><%= order.status %></td>
         </tr>
       <% end %>
@@ -21,4 +27,6 @@
     </table>
 <div>
 　<%= paginate @orders %>
+</div>
+</div>
 </div>
