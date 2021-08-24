@@ -1,5 +1,10 @@
-<h2>注文履歴詳細</h2>
-<table>
+<div class="contain">
+  <div class="row">
+   <div class="mx-auto col-12 col-xl-10">
+     <h2><span class="badge badge-secondary">注文履歴詳細</span></h2>
+   </div>
+  </div>
+<table class= table>
   <tr>
     <th>購入者</th>
     <td><%= link_to @customer.name, admins_customer_path(customer) %></td>
@@ -71,4 +76,5 @@
     <th>請求合計金額</th>
     <td><%= (@order.total_payment + @order.carriage) %></td>
   </tr>
+</div>
 </div>
