@@ -10,11 +10,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @address = current_customer
-    @address1 = current_customer.postal_code
-    @receiver = current_customer.receivers.all
-
-
+    
   end
 
   def comfirm
@@ -31,7 +27,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :address_option)
+    params.require(:order).permit(:postal_code, :address, :name)
   end
 
 
