@@ -12,38 +12,39 @@
       <%= f.label :payment_method, '銀行振込' %>
       </div>
 
+
+
+     <%= f.label :address, "お届け先" %>
+    <br>
+
+    <%= f.radio_button :address_option, 0, checked: "checked" %>
+    <%= f.label :order_address, "ご自身の住所" %>
+    <%= @address.postal_code %>
+    <%= @address.address %>
+    <%= @address.first_name %>
+    <br>
+    <%= f.radio_button :address_option, 1 %>
+    <%= f.label :order_address, "登録済住所から選択" %>
+    <%= f.collection_select(:order_address, @receiver, :id, :address1, :include_blank => "選択してください") %>
+
+    <br>
+    <%= f.radio_button :address_option, 2 %>
+    <%= f.label :order_address, "新しいお届け先" %>
+    <br>
+
+    <%= f.label :postal_code, "郵便番号" %>
+    <%= f.text_field :postal_code %>
+    <br>
+
+    <%= f.label :order_address, "住所" %>
+    <%= f.text_field :order_address %>
+    <br>
+
+    <%= f.label :order_address, "宛名" %>
+    <%= f.text_field :name %>
+
+    <%= f.submit "確認画面へ進む" , class:"btn btn-primary" %>
+
+    <% end %>
   </div>
-
- <%= f.label :address, "お届け先" %>
-<br>
-
-<%= f.radio_button :address_option, 0, checked: "checked" %>
-<%= f.label :order_address, "ご自身の住所" %>
-<%= @address.postal_code %>
-<%= @address.address %>
-<%= @address.first_name %>
-<br>
-<%= f.radio_button :address_option, 1 %>
-<%= f.label :order_address, "登録済住所から選択" %>
-<%= f.collection_select(:order_address, @receiver, :id, :address1, :include_blank => "選択してください") %>
-
-<br>
-<%= f.radio_button :address_option, 2 %>
-<%= f.label :order_address, "新しいお届け先" %>
-<br>
-
-<%= f.label :postal_code, "郵便番号" %>
-<%= f.text_field :postal_code %>
-<br>
-
-<%= f.label :order_address, "住所" %>
-<%= f.text_field :order_address %>
-<br>
-
-<%= f.label :order_address, "宛名" %>
-<%= f.text_field :name %>
-
-<%= f.submit "確認画面へ進む" , class:"btn btn-primary" %>
-
 </body>
-<% end %>
