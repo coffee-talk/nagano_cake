@@ -1,8 +1,13 @@
-<h2>商品詳細</h2>
- <div>
-  <%= attachment_image_tag @product, :image %>
+<div class="container">
+  <div class="row">
+<h2><span class="badge badge-secondary">商品詳細</span></h2>
+</div>
+<div class="row">
+ <div class="col-lg-4">
+  <%= attachment_image_tag @product, :image, size: "350x250" %>
  </div>
-<table>
+ <div class="col-lg-8">
+<table class="table table-borderless">
   <tr>
     <th>商品名</th>
     <td><%= @product.name %></td>
@@ -13,7 +18,7 @@
   </tr>
   <tr>
     <th>ジャンル</th>
-    <td><%= @product.genre_id %></td>
+    <td><%= @product.genre.name %></td>
   </tr>
   <tr>
     <th>税込価格（税抜価格）</th>
@@ -23,13 +28,15 @@
     <th>販売ステータス</th>
     <td>
      <% if @product.is_active %>
-      <p>販売中</p>
+      <p class= "text-success">販売中</p>
      <% else %>
-      <p>販売停止中</p>
+      <p class= "text-muted">販売停止中</p>
      <% end %>
     </td>
   </tr>
 </table>
-<div>
-  <%= link_to '編集する', edit_admins_product_path(@product) %>
+<div class= "ml-5">
+  <%= link_to '編集する', edit_admins_product_path(@product), class:"btn btn-success" %>
+</div>
+</div>
 </div>
