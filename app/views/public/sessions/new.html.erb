@@ -11,8 +11,22 @@
       </div>
     </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-class="col-2"
-
+    <div class="row my-3 pl-5">
+      <div class="col-2">
+        <%= f.label :メールアドレス %>
+      </div>
+      <div class="col-6">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50x20", placeholder: "sample@example.com" %>
+       </div>
+    </div>
+    <div class="row my-3 pl-5">
+      <div class="col-2">
+        <%= f.label :パスワード %>
+      </div>
+      <div class="col-6">
+        <%= f.password_field :password, autocomplete: "current-password", size: "50x20" %>
+      </div>
+    </div>
       <div class="row my-4">
         <div class="col-6 text-center ml-4">
           <%= f.submit "ログイン", class: 'btn btn-primary w-25' %>
