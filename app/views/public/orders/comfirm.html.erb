@@ -41,11 +41,11 @@
         <table class='table col-md-2'>
           <thead>
             <tr><th>送料</th>
-            <td><%= @carriage %></td></tr>
+            <td><%= @order.carriage %></td></tr>
             <tr><th>商品合計</th>
             <td><%= sum.floor.to_s(:delimited) %></td></tr>
             <tr><th>請求金額</th>
-              <% sum2 = sum + @carriage %>
+              <% sum2 = sum + @order.carriage %>
             <td>
               <%= sum2.floor.to_s(:delimited) %>
             </td></tr>
@@ -57,23 +57,15 @@
            <div class='col-md-8'>
             <div>
               <h5><strong>支払方法</strong></h5>
-              <%= @payment_method %>
+              <%= @order.payment_method %>
             </div>
             <div>
               <h5><strong>お届け先</strong></h5>
-              <% if @address_option == "0" %>
-                <%= @my_address.postal_code %>
-                <%= @my_address.address %>
-                <%= @my_address.first_name %>
-              <% elsif @address_option == "1" %>
-                <%= @saved_address.postal_code %>
-                <%= @saved_address.address %>
-                <%= @saved_address.name %>
-              <% elsif @address_option == "2" %>
+             
                 <%= @order.postal_code %>
                 <%= @order.address %>
                 <%= @order.name %>
-              <% end %>
+             
             </div>
            </div>
 
@@ -84,10 +76,3 @@
     </div>
   </div>
 </div>
-
-        <div>
-         <%= form_with(model: @order, url: orders_path, local: true) do |f| %>
-          <%= f.hidden_field :total_payment, value:sum2 %>
-          <%= f.submit "注文を確定する", class:"btn btn-success" %>
-         <% end %>
-        </div>
