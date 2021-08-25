@@ -19,12 +19,11 @@ class Public::OrdersController < ApplicationController
     if @address_option == "0"
       @my_address = current_customer
     elsif @address_option == "1"
-      @saved_address = Receiver.find_by(order_params[:order_address])
+      # @saved_address = Receiver.find_by(order_params[:order_address])
+      # @saved_address = Receiver.find_by(id: params[:order][:order_address])
+      @saved_address = Receiver.find(params[:order][:order_address])
     elsif @address_option == "2"
-      @new_order = Order.new
-      @new_order.postal_code = params[:order][:postal_code]
-      @new_order.address = params[:order][:address]
-      @new_order.name = params[:order][:name]
+      @order = Order.new(order_params)
     end
   end
 
@@ -44,7 +43,7 @@ class Public::OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:postal_code, :address, :name, :payment_method, :address_option, :order_address)
+      params.require(:order).permit(:postal_code, :address, :name, :payment_method)
     end
 
 end
