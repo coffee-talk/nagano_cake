@@ -57,16 +57,16 @@
           <%= f.label :"郵便番号（ハイフンなし）" %>
         </div>
         <div class="col">
-          <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", size: "75x20" %>
+          <%= f.text_field :postal_code, autofocus: true %>
         </div>
       </div>
 
       <div class="row my-2">
         <div class="col-4">
-          <%= f.label :"住所" %>
+          <%= f.label :"住所"%>
         </div>
         <div class="col">
-          <%= f.text_field :address, autofocus: true %>
+          <%= f.text_field :address, autofocus: true, autocomplete: "postal_code", size: "75x20" %>
         </div>
       </div>
 
