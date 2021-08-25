@@ -8,7 +8,7 @@
       <div class="form-group row justify-content-center">
       <div>
         <%= link_to "退会しない", customers_path, class:"btn btn-primary" %>
-        <%= link_to "退会する", customers_quit_update_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class:"btn btn-danger" %>
+        <%= link_to "退会する", customers_quit_update_path, method: :patch, data: {confirm: '本当に退会してよろしいですか？'} , class:"btn btn-danger" %>
       </div>
       </div>
     </div>
