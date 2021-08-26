@@ -1,17 +1,18 @@
 <div class="container">
-  <div class="row">
+  <div class="row my-5">
     <div class='mx-auto col-12 col-xl-10'>
-
       <h2>
         <strong>商品一覧</strong>
-        <span>(全<%= @products.count %>件)</span>
+        <span>(全<%= @tatal_product.count %>件)</span>
       </h2>
+    </div>
+  </div>
       <div class="row">
         <% @products.each do |product| %>
           <div class="col-md-3">
             <%= link_to product_path(product.id), class: "btn-link", :style=>"color:#0099FF;" do %>
               <div><strong>
-                <div><%= attachment_image_tag product, :image, size: "200x150" %></div>
+                <div class="my-3"><%= attachment_image_tag product, :image, size: "200x150" %></div>
                 <div><%= product.name %></div>
                 <div>¥<%= product.price.to_s(:delimited) %></div>
               </strong></div>
@@ -20,8 +21,8 @@
         <% end %>
       </div>
         <div>
-          <%= paginate @products %>
+          <strong><%= paginate @products %></strong>
         </div>
     </div>
-  </div>
+
 </div>

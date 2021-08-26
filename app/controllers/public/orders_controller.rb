@@ -1,8 +1,9 @@
 class Public::OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.page(params[:page]).per(5)
     @product = Product.all
+    # @page = Order.page(params[:page]).per(10)
   end
 
   def show
