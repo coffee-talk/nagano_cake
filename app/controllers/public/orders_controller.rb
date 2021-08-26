@@ -5,6 +5,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   def new
@@ -47,7 +48,7 @@ class Public::OrdersController < ApplicationController
     @order.status = 0
     if @order.save
     redirect_to root_path
-    else 
+    else
     redirect_to cart_items_path
     end
   end
