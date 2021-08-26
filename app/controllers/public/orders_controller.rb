@@ -2,6 +2,8 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @product = Product.all
+
   end
 
   def show
@@ -60,9 +62,9 @@ class Public::OrdersController < ApplicationController
     end
 
     if @order.save
-    redirect_to root_path
+    redirect_to orders_complete_path
     else
-    redirect_to cart_items_path
+    redirect_to orders_comfirm_path
     end
   end
 
