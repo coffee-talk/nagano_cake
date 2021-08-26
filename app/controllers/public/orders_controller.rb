@@ -46,6 +46,19 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.carriage = 800
     @order.status = 0
+
+    @cart_items = current_customer.cart_items
+    @product = Product.all
+    @cart_items.each do |cart_item|
+      @ordered_products = @order.ordered_products.new
+      @ordered_products.product_id = cart_item.product.id
+      @ordered_products.amount = cart_item.amount
+      @ordered_products.making_status = 0
+      @ordered_products.price = cart_item.product.add_tax_price
+      @ordered_products.save
+      current_customer.cart_items.destroy_all
+    end
+
     if @order.save
     redirect_to root_path
     else
