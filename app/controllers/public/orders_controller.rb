@@ -3,11 +3,12 @@ class Public::OrdersController < ApplicationController
   def index
     @orders = Order.all
     @product = Product.all
-
   end
 
   def show
     @order = Order.find(params[:id])
+    @ordered_products = @order.ordered_products
+    @order.carriage = 800
   end
 
   def new
@@ -58,13 +59,13 @@ class Public::OrdersController < ApplicationController
       @ordered_products.making_status = 0
       @ordered_products.price = cart_item.product.add_tax_price
       @ordered_products.save
-      current_customer.cart_items.destroy_all
     end
+      current_customer.cart_items.destroy_all
 
     if @order.save
-    redirect_to orders_complete_path
+      redirect_to orders_complete_path
     else
-    redirect_to orders_comfirm_path
+      redirect_to orders_comfirm_path
     end
   end
 
