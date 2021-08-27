@@ -19,7 +19,7 @@
         <tr>
           <td><%= link_to order.created_at, admins_order_path(order) %></td>
           <td><%= order.name %></td>
-          <td><%= @ordered_product.sum(:amount) %></td>
+          <td><%= order.ordered_products.sum(:amount) %></td>
           <td><%= order.status %></td>
         </tr>
       <% end %>
