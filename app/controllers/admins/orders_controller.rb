@@ -9,10 +9,24 @@ class Admins::OrdersController < ApplicationController
   def edit
   end
 
+  # def update
+  #   @order = Order.find(params[:id])
+  #   @order.update(order_params)
+  #   redirect_to admins_order_path(@order)
+  # end
+
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
-    redirect_to admins_order_path(@order)
+    if @order.update(order_params)
+      if @order.status == '入金確認'
+      @order.ordered_products.update_all(making_status: 1 )
+      redirect_to request.referer
+      else
+      redirect_to request.referer
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   private
