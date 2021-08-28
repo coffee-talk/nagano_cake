@@ -9,7 +9,7 @@
       <table class= "table table-borderless">
       <tr>
         <th>購入者</th>
-        <td><%= link_to @customer, admins_customer_path(@customer) %></td>
+        <td><%= link_to @order.customer.last_name + @order.customer.first_name, admins_customer_path(@order.customer) %></td>
       </tr>
       <tr>
         <th>注文日</th>
@@ -54,7 +54,7 @@
         <% @order.ordered_products.each do |ordered_product| %>
           <tr>
             <td><%= ordered_product.product.name %></td>
-            <td><%= ordered_product.price %></td>
+            <td><%= ordered_product.price.to_s(:delimited) %></td>
             <td><%= ordered_product.amount %></td>
             <td><%= ordered_product.price * ordered_product.amount %></td>
             <td>
@@ -74,7 +74,7 @@
       <table class="table borderless" >
         <tr>
           <th>商品合計</th>
-          <td><%= @order.total_payment %>円</td>
+          <td><%= (@order.total_payment - @order.carriage).to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th>送料</th>
@@ -82,7 +82,7 @@
         </tr>
         <tr>
           <th>請求合計金額</th>
-          <td><%= (@order.total_payment + @order.carriage) %></td>
+          <td><%= @order.total_payment.floor.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
